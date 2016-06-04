@@ -1,10 +1,14 @@
 package lab.refactoring.web.exercicio;
 
 public class Produto {
+
   private Long codigo;
+  
   private String nome;
+  
   //Quantidade
   private Long q;
+  
   //Quantidade máxima.
   private Long qm;
 

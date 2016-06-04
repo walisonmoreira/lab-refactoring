@@ -1,14 +1,18 @@
 package lab.refactoring.web.exercicio;
 
 public class Estoque {
+
   private BancoDeDados b;
+
   public Estoque(BancoDeDados b) {
     this.b = b;
   }
+
   private boolean verificaSeOParametroENulo(Object o) {
     return o == null;
   }
-  public void processarProduto(Produto p) {  
+
+  public void processarProduto(Produto p) {
     //Obtém o produto completo do banco de dados.
     if (verificaSeOParametroENulo(p.getCodigo())) {
       throw new IllegalArgumentException("O código do produto não pode ser nulo.");
