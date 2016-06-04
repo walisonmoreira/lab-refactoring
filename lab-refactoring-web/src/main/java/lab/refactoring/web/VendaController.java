@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/venda")
 public class VendaController {
   
   @Autowired
@@ -13,20 +14,14 @@ public class VendaController {
 
   @RequestMapping("/vender")
   public Venda vender(
-      @RequestParam String pro,
-      @RequestParam Long qt) {
+      @RequestParam String produto,
+      @RequestParam Long quantidade) {
 
-    Venda v = new Venda();
-    v.setPro(pro);
-    v.setQt(qt);
-    
-    vendaRepository.save(v);
-    
-    return v;
+    return vendaRepository.save(new Venda(produto, quantidade));
   }
 
-  @RequestMapping("/lista")
-  public Iterable<Venda> lista() {
+  @RequestMapping("/listar")
+  public Iterable<Venda> listar() {
     return vendaRepository.findAll();
   }
   

@@ -11,9 +11,18 @@ public class Venda {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  private String pro;
+  private String produto;
 
-  private Long qt;
+  private Long quantidade;
+
+  public Venda() {
+  }
+
+  public Venda(String produto, Long quantidade) {
+    super();
+    this.produto = produto;
+    this.quantidade = quantidade;
+  }
 
   public Long getId() {
     return id;
@@ -23,20 +32,12 @@ public class Venda {
     this.id = id;
   }
 
-  public String getPro() {
-    return pro;
+  public String getProduto() {
+    return produto;
   }
 
-  public void setPro(String pro) {
-    this.pro = pro;
-  }
-
-  public Long getQt() {
-    return qt;
-  }
-
-  public void setQt(Long qt) {
-    this.qt = qt;
+  public Long getQuantidade() {
+    return quantidade;
   }
 
 }
