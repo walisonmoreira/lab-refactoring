@@ -11,7 +11,7 @@ public class Venda {
   @Id
   private Integer codigo;
 
-  private String tipo;
+  private TIPO_VENDA tipo;
   
   private String produto;
 
@@ -26,7 +26,7 @@ public class Venda {
 
   public Venda(Integer codigo, String tipo, String produto, Integer quantidade, Double valor, Date data) {
     this.codigo = codigo;
-    this.tipo = tipo;
+    this.tipo = TIPO_VENDA.from(tipo);
     this.produto = produto;
     this.quantidade = quantidade;
     this.valor = valor;
@@ -41,11 +41,11 @@ public class Venda {
     this.codigo = codigo;
   }
 
-  public String getTipo() {
+  public TIPO_VENDA getTipo() {
     return tipo;
   }
 
-  public void setTipo(String tipo) {
+  public void setTipo(TIPO_VENDA tipo) {
     this.tipo = tipo;
   }
 
