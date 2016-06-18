@@ -1,10 +1,12 @@
 package lab.refactoring.web;
 
-import static com.jayway.restassured.RestAssured.when;
+import static com.jayway.restassured.RestAssured.*;
+import static org.hamcrest.core.StringContains.containsString;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.ws.rs.core.Response.Status;
 
@@ -60,5 +62,20 @@ public class WebApplicationTests {
       contentType(ContentType.JSON).
       body("codigo", Matchers.is(arrozCodigo)).
       body("produto", Matchers.is("Arroz"));
+  }
+
+  @Test
+  public void vendaIncorreta() {
+    int quantidade = 31;
+    Venda venda = new Venda(1, "A_VISTA", "Arroz", quantidade, 400.0, new Date());
+    
+    given().
+      contentType(ContentType.JSON).
+      body(venda).
+    when().
+      post("/api/vendas").
+    then().
+      body(containsString("Venda incorreta")).
+      statusCode(Status.INTERNAL_SERVER_ERROR.getStatusCode());
   }
 }

@@ -21,10 +21,14 @@ public class VendasRest {
 
   @Inject
   private VendaRepository vendaRepository;
+  
+  @Inject
+  private VendaService vendaService;
 
   @POST
   @Consumes(APPLICATION_JSON)
   public Response realizarVenda(Venda novaVenda) {
+    vendaService.validarVenda(novaVenda);
     vendaRepository.save(novaVenda);
     return ok().build();
   }
