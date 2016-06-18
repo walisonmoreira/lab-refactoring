@@ -1,16 +1,17 @@
 package lab.refactoring.web.exercicio;
 
+import static lab.refactoring.web.exercicio.Validadores.validarIgual;
+import static lab.refactoring.web.exercicio.Validadores.validarNulo;
+
 public class Produto {
 
   private Long codigo;
   
   private String nome;
   
-  //Quantidade
-  private Long q;
+  private Long quantidade;
   
-  //Quantidade máxima.
-  private Long qm;
+  private Long quantidadeMaxima;
 
   public Long getCodigo() {
     return codigo;
@@ -28,19 +29,35 @@ public class Produto {
     this.nome = nome;
   }
 
-  public Long getQ() {
-    return q;
+  public Long getQuantidade() {
+    return quantidade;
   }
 
-  public void setQ(Long q) {
-    this.q = q;
+  public void setQuantidade(Long quantidade) {
+    this.quantidade = quantidade;
   }
 
-  public Long getQm() {
-    return qm;
+  public Long getQuantidadeMaxima() {
+    return quantidadeMaxima;
   }
 
-  public void setQm(Long qm) {
-    this.qm = qm;
+  public void setQuantidadeMaxima(Long quantidadeMaxima) {
+    this.quantidadeMaxima = quantidadeMaxima;
+  }
+
+  public void validar() {
+    validarNulo(codigo,
+        "O código do produto não pode ser nulo.");
+    validarIgual(codigo, 0L,
+        "O código do produto não pode ser zero.");
+  }
+
+  public void validarQuantidade() {
+    validarIgual(quantidade, quantidadeMaxima,
+        "A capacidade máxima foi alcançada.");
+  }
+
+  public void incrementarQuantidade() {
+    quantidade++;
   }
 }
