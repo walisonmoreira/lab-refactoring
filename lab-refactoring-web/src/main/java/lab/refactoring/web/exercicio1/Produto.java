@@ -1,7 +1,7 @@
-package lab.refactoring.web.exercicio;
+package lab.refactoring.web.exercicio1;
 
-import static lab.refactoring.web.exercicio.Validadores.validarIgual;
-import static lab.refactoring.web.exercicio.Validadores.validarNulo;
+import static lab.refactoring.web.exercicio1.Validadores.validarIgual;
+import static lab.refactoring.web.exercicio1.Validadores.validarNulo;
 
 public class Produto {
 

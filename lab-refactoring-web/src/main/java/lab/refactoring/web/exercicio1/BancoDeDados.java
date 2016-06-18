@@ -1,4 +1,4 @@
-package lab.refactoring.web.exercicio;
+package lab.refactoring.web.exercicio1;
 
 public class BancoDeDados {
 
