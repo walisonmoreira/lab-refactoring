@@ -8,6 +8,8 @@ import javax.persistence.Id;
 @Entity
 public class Venda {
 
+  public static final String A_VISTA = "A_VISTA";
+
   @Id
   private Integer codigo;
 

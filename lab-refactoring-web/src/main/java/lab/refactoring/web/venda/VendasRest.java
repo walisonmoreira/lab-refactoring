@@ -3,9 +3,6 @@ package lab.refactoring.web.venda;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.ok;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -27,9 +24,8 @@ public class VendasRest {
 
   @POST
   @Consumes(APPLICATION_JSON)
-  public Response realizarVenda(Venda novaVenda) {
-    vendaService.validarVenda(novaVenda);
-    vendaRepository.save(novaVenda);
+  public Response realizarVenda(Venda venda) {
+    vendaService.realizarVenda(venda);
     return ok().build();
   }
 
@@ -65,10 +61,8 @@ public class VendasRest {
   @GET
   @Produces(APPLICATION_JSON)
   public Response obterVendasRecentes() {
-    Calendar c = Calendar.getInstance();
-    c.add(Calendar.DATE, -7);
-    Date d = c.getTime();
-    Iterable<Venda> vendas = vendaRepository.findByDataGreaterThan(d);
+    Iterable<Venda> vendas = vendaService.obterVendasRecentes();
     return ok().entity(vendas).build();
   }
+
 }
