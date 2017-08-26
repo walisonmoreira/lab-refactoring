@@ -24,7 +24,9 @@ public class VendaService {
   private VendaRepository vendaRepository;
 
   private void validarVenda(Venda venda) {
-    if (venda.getTipo().equals(Venda.A_VISTA) && venda.getQuantidade() > QTDE_MAX_PROD_VENDA_A_VISTA) {
+    if (!venda.getProduto().equals("Caneta")
+        && venda.getTipo().equals(TIPO_VENDA.A_VISTA)
+        && venda.getQuantidade() > QTDE_MAX_PROD_VENDA_A_VISTA) {
       throw new RuntimeException(MSG_FALHA_QTDE_MAX_PROD_VENDA_A_VISTA);
     }
   }

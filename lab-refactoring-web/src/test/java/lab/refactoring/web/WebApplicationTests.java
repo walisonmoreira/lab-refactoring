@@ -53,7 +53,13 @@ public class WebApplicationTests {
   @Test
   public void quantidadeMaximaDeProdutosParaVendaAVista() {
     int quantidade = VendaService.QTDE_MAX_PROD_VENDA_A_VISTA + 1;
-    Venda venda = new Venda(VENDA_ID_TESTE, Venda.A_VISTA, "Arroz", quantidade, 400.0, new Date());
+    Venda venda = new Venda(
+        VENDA_ID_TESTE,
+        Venda.A_VISTA,
+        "Arroz",
+        quantidade,
+        400.0,
+        new Date());
 
     given().
       contentType(ContentType.JSON).
@@ -63,5 +69,25 @@ public class WebApplicationTests {
     then().
       statusCode(Status.INTERNAL_SERVER_ERROR.getStatusCode()).
       body(containsString(VendaService.MSG_FALHA_QTDE_MAX_PROD_VENDA_A_VISTA));
+  }
+
+  @Test
+  public void quantidadeMaximaDeCanetasParaVendaAVista() {
+    int quantidade = VendaService.QTDE_MAX_PROD_VENDA_A_VISTA + 1;
+    Venda venda = new Venda(
+        VENDA_ID_TESTE,
+        Venda.A_VISTA,
+        "Caneta",
+        quantidade,
+        310.0,
+        new Date());
+
+    given().
+      contentType(ContentType.JSON).
+      body(venda).
+    when().
+      post("/api/vendas").
+    then().
+      statusCode(Status.OK.getStatusCode());
   }
 }
